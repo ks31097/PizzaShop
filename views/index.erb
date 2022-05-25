@@ -4,13 +4,19 @@
   <% @products.each do |p| %>
     <div class="col-md-3">
       <div>
+        <%= p.title %>
+      </div>
+      <div>
         <img src="<%= p.path_to_image %>" alt="<%= p.title %>" width="200" height="200">
       </div>
       <div>
         <%= p.discription %>
       </div>
       <div>
-        <%= p.title %>
+        Size: <%= p.size %> cm
+      </div>
+      <div>
+        Price: <%= p.price %> uan
       </div>
       <div>
         <button type="button" class="btn btn-primary" onclick="something()">Click me!</button>
