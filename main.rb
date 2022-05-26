@@ -19,3 +19,7 @@ get '/about' do
   @title = "About Us"
   erb :about
 end
+
+post '/cart' do
+  erb "Hello!"
+end

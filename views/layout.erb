@@ -24,7 +24,10 @@
               </ul>
               <ul class="nav justify-content-end">
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Cart (...)</a>
+                  <form action="/cart" method="post">
+                    <input type="text" name="orders">
+                    <input name="" type="submit" class="btn btn-success btn-lg" value="Cart (...)">
+                  </form>
                 </li>
               </ul>
             </div>
