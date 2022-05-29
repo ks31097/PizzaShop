@@ -12,7 +12,8 @@
   </thead>
   <tbody>
 
-  <% @total_price = 0 %>
+  <% total_price = 0 %>
+  <% total_quantity = 0 %>
 
   <% @items.each do |item| %>
     <tr>
@@ -20,17 +21,14 @@
       <td><%= item[0].title %></td>
       <td><%= item[0].price %></td>
       <td><%= item[1]%></td>
-      <% "#{price = item[0].price * item[1].to_i}" %>
-      <td><%= price %></td>
-      <% @total_price = @total_price + price %>
+      <td><%= item[0].price * item[1].to_i %></td>
+      <% total_price += item[0].price * item[1].to_i %>
+      <% total_quantity += item[1].to_i %>
     </tr>
     <% end %>
-      <tr>
-        <th scope="col"></th>
-        <th scope="col"></th>
-        <th scope="col"></th>
-        <th scope="col">Total price:</th>
-        <th scope="col"><%= @total_price %></th>
-      </tr>
   </tbody>
 </table>
+<div>
+  <p class="text-end fs-5"><strong> Total quantity: <%= total_quantity %></strong></p>
+  <p class="text-end fs-5"><strong> Total price: <%= total_price %> uan</strong></p>
+</div>
