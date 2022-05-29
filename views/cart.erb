@@ -1,3 +1,36 @@
 <h2>Your cart</h2>
 
-<%= @items.inspect %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Summary price</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  <% @total_price = 0 %>
+
+  <% @items.each do |item| %>
+    <tr>
+      <th scope="row"><%= item[0].id %></th>
+      <td><%= item[0].title %></td>
+      <td><%= item[0].price %></td>
+      <td><%= item[1]%></td>
+      <% "#{price = item[0].price * item[1].to_i}" %>
+      <td><%= price %></td>
+      <% @total_price = @total_price + price %>
+    </tr>
+    <% end %>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col">Total price:</th>
+        <th scope="col"><%= @total_price %></th>
+      </tr>
+  </tbody>
+</table>
