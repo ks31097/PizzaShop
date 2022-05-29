@@ -18,7 +18,9 @@
   <% @items.each do |item| %>
     <tr>
       <th scope="row"><%= item[0].id %></th>
-      <td><%= item[0].title %></td>
+      <td>
+          <a href="/cart/<%= item[0].id %>"><%= item[0].title %></a>
+      </td>
       <td><%= item[0].price %></td>
       <td><%= item[1]%></td>
       <td><%= item[0].price * item[1].to_i %></td>
@@ -32,3 +34,24 @@
   <p class="text-end fs-5"><strong> Total quantity: <%= total_quantity %></strong></p>
   <p class="text-end fs-5"><strong> Total price: <%= total_price %> uan</strong></p>
 </div>
+
+<h2>Подтвердить заказ:</h2>
+<input name="order_client[orders_input]" value="<%= @client_order %>" type="hidden">
+<form class="" action="/place_order" method="post">
+  <div class="mb-3">
+    <label>Ваше имя</label>
+    <input name="order_client[name]" type="text" class="form-control" placeholder="Введите Ваше имя" value="<% %>" autocomplete="off">
+  </div>
+
+  <div class="mb-3">
+    <label>Ваш телефон</label>
+    <input name="order_client[phone]" type="text" class="form-control" placeholder="Введите номер Вашего телефона" value="<% %>" autocomplete="off">
+  </div>
+
+  <div class="mb-3">
+    <label>Адрес доставки:</label>
+    <textarea name="order_client[adress]" class="form-control" placeholder="Введите адрес доставки" value="<% %>" rows="3" cols="80"></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Подтвердить заказ</button>
+</form>
