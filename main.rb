@@ -7,6 +7,9 @@ set :database, {adapter: "sqlite3", database: "pizzashop.db"}
 class Product < ActiveRecord::Base
 end
 
+class Order < ActiveRecord::Base
+end
+
 before do
   @products = Product.all
 end
@@ -22,7 +25,7 @@ end
 
 post '/cart' do
   orders_input = params[:orders]
-  @client_order = orders_input
+  @client_bye = orders_input
   @items = parse_orders_input orders_input
 
   @items.each do |item|
@@ -48,4 +51,14 @@ def parse_orders_input orders_input
   end
 
   return arr
+end
+
+post '/place_order' do
+  @order_info = Order.new params[:order]
+  if @order_info.save
+      erb "<h2>Спасибо, Ваш заказ принят!</h2>"
+  else
+    @error = @order_info.errors.full_messages.first
+    erb :cart
+  end
 end

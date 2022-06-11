@@ -36,21 +36,24 @@
 </div>
 
 <h2>Подтвердить заказ:</h2>
-<input name="order_client[orders_input]" value="<%= @client_order %>" type="hidden">
 <form class="" action="/place_order" method="post">
   <div class="mb-3">
     <label>Ваше имя</label>
-    <input name="order_client[name]" type="text" class="form-control" placeholder="Введите Ваше имя" value="<% %>" autocomplete="off">
+    <input name="order[name]" type="text" class="form-control" placeholder="Введите Ваше имя" value="<% %>" autocomplete="off">
   </div>
 
   <div class="mb-3">
     <label>Ваш телефон</label>
-    <input name="order_client[phone]" type="text" class="form-control" placeholder="Введите номер Вашего телефона" value="<% %>" autocomplete="off">
+    <input name="order[phone]" type="text" class="form-control" placeholder="Введите номер Вашего телефона" value="<% %>" autocomplete="off">
   </div>
 
   <div class="mb-3">
     <label>Адрес доставки:</label>
-    <textarea name="order_client[adress]" class="form-control" placeholder="Введите адрес доставки" value="<% %>" rows="3" cols="80"></textarea>
+    <textarea name="order[delivery_address]" class="form-control" placeholder="Введите адрес доставки" value="<% %>" rows="3" cols="80"></textarea>
+  </div>
+
+  <div class="mb-3">
+    <input name="order[client_order]" value="<%= @client_bye %>" type="text">
   </div>
 
   <button type="submit" class="btn btn-primary">Подтвердить заказ</button>
