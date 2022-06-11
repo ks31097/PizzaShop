@@ -56,9 +56,9 @@ end
 post '/place_order' do
   @order_info = Order.new params[:order]
   if @order_info.save
-      erb "<h2>Спасибо, Ваш заказ принят!</h2>"
+      erb :order_placed
   else
     @error = @order_info.errors.full_messages.first
-    erb :cart
+    erb :order_placed
   end
 end
